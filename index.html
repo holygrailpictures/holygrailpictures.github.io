@@ -5,12 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Holy Grail Pictures</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body, html { font-family: sans-serif; background-color: #111; color: #fff; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
     header {
       position: relative;
       height: 100vh;
       overflow: hidden;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,0.8);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 20;
+    }
+    nav h1 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
     }
     .slider {
       position: absolute;
@@ -36,70 +69,128 @@
       text-align: center;
       z-index: 10;
     }
-    .hero-content h1 {
-      font-size: 3rem;
+    .hero-content h2 {
+      font-size: 3.5rem;
       margin-bottom: 1rem;
     }
     .hero-content p {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-bottom: 2rem;
     }
     .hero-content a {
-      padding: 0.75rem 1.5rem;
+      padding: 1rem 2rem;
       background: #fff;
       color: #000;
       text-decoration: none;
       border-radius: 5px;
+      font-size: 1.1rem;
     }
     section {
-      padding: 4rem 2rem;
-      max-width: 800px;
+      padding: 5rem 2rem;
+      max-width: 1000px;
       margin: 0 auto;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    section p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .project-tile {
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.3s ease, max-height 0.5s ease;
+      cursor: pointer;
+    }
+    .project-tile img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .project-info {
+      padding: 1.5rem;
+    }
+    .project-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .project-info p {
+      display: none;
+      font-size: 1rem;
+      color: #ccc;
+    }
+    .project-tile.expanded .project-info p {
+      display: block;
     }
     footer {
       padding: 2rem;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 1rem;
       background: #222;
       color: #aaa;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <h1>Holy Grail Pictures</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#support">Support</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <header>
     <div class="slider">
       <img src="assets/camledog.png" class="slide active" alt="slide 1">
       <img src="assets/nebelwurm.png" class="slide" alt="slide 2">
-      <!-- <img src="img3.png" class="slide" alt="slide 3"> -->
     </div>
     <div class="hero-content">
-      <h1>Holy Grail Pictures</h1>
-      <p>AI-powered storytelling – absurdly real.</p>
+      <h2>AI-powered storytelling</h2>
+      <p>Absurdly real. Creatively unreal.</p>
       <a href="https://youtube.com/@holygrailpictures" target="_blank">Watch on YouTube</a>
     </div>
   </header>
 
-  <section>
+  <section id="about">
     <h2>About</h2>
     <p>
-      Holy Grail Pictures is a creative studio where machines dream and humans curate. A joint venture between Chromosomfilm GmbH and Lohmann Medien GmbH, we specialize in content powered by artificial intelligence – guided by creative intent.
+      Holy Grail Pictures is a creative studio where machines dream and humans curate. A joint venture between <a href="https://chromosom-film.de/" target="_blank">Chromosomfilm GmbH</a> and <a href="https://lohmanngroup.com/" target="_blank">Lohmann Medien GmbH</a>, we specialize in content powered by artificial intelligence – guided by creative intent.
+    </p>
+    <p>
+      The core visionary behind our productions is director and AI creator <a href="https://gregor-hutz.de/" target="_blank">Gregor Hutz</a>, whose unique fusion of cinematic craft and computational design drives our storytelling.
     </p>
     <p>
       From social media content for brands to full-scale productions like <em>Wild & Weird</em>, we cover the entire spectrum of AI-driven storytelling. Our projects combine cutting-edge technology with cinematic sensibility, humor with high fidelity.
     </p>
   </section>
 
-  <section>
-    <h2>Wild & Weird</h2>
-    <p>
-      Our flagship series – a nature documentary about animals that don’t exist but very well could. Presented in a serious tone with ultra-realistic visuals, <em>Wild & Weird</em> brings fictional biology to life with the help of modern AI.
-    </p>
-    <p>
-      New episodes every week on YouTube. Come for the realism, stay for the evolutionary surprises.
-    </p>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-tile" onclick="this.classList.toggle('expanded')">
+        <img src="assets/camledog.png" alt="Wild & Weird thumbnail">
+        <div class="project-info">
+          <h3>Wild & Weird</h3>
+          <p>A nature documentary about animals that don’t exist – but very well could. Photorealistic visuals, serious narration, and biologically plausible nonsense brought to you by AI.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section>
+  <section id="support">
     <h2>Support</h2>
     <p>
       Holy Grail Pictures is proudly independent. If you like what we do and want to support more AI-made magic, feel free to donate:
@@ -108,7 +199,7 @@
     </p>
   </section>
 
-  <section>
+  <section id="contact">
     <h2>Contact</h2>
     <p>
       Got a project idea, press inquiry or curious question? We’d love to hear from you: <br>
@@ -117,7 +208,7 @@
   </section>
 
   <footer>
-    &copy; 2025 Holy Grail Pictures – Joint Venture by Chromosomfilm & Lohmann Medien
+    &copy; 2025 Holy Grail Pictures – Joint Venture by <a href="https://chromosom-film.de/" target="_blank">Chromosomfilm</a> & <a href="https://lohmanngroup.com/" target="_blank">Lohmann Medien</a>
   </footer>
 
   <script>
